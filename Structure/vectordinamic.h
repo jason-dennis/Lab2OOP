@@ -1,0 +1,27 @@
+//
+// Created by Ognean Jason Dennis on 05.03.2026.
+//
+
+#ifndef LAB2_VECTORDINAMIC_H
+#define LAB2_VECTORDINAMIC_H
+
+typedef void* Element;
+
+typedef struct {
+    Element* item;
+    int dim;
+    int cnt;
+}VectorDinamic;
+
+VectorDinamic * Creeaza_Vector();
+void Distruge_Vector(VectorDinamic *V);
+void Resize_Vector(VectorDinamic* V);
+
+
+void Adauga(VectorDinamic *v,Element el);
+Element Get(VectorDinamic *v, int poz);
+void Sterge(VectorDinamic *v,int poz);
+int Cauta(VectorDinamic *v,Element el);
+
+
+#endif //LAB2_VECTORDINAMIC_H
