@@ -6,6 +6,7 @@
 #define LAB2_VECTORDINAMIC_H
 
 typedef void* Element;
+typedef int (*Functie)(Element,Element);
 
 typedef struct {
     Element* item;
@@ -21,7 +22,7 @@ void Resize_Vector(VectorDinamic* V);
 void Adauga(VectorDinamic *v,Element el);
 Element Get(VectorDinamic *v, int poz);
 void Sterge(VectorDinamic *v,int poz);
-int Cauta(VectorDinamic *v,Element el);
+int Cauta(VectorDinamic *v,Element el,Functie f);
 
 
 #endif //LAB2_VECTORDINAMIC_H
