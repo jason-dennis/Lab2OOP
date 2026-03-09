@@ -10,8 +10,11 @@ typedef struct{
     char descriere[256];
 }Tranzactie;
 
-Tranzactie *Creeaza_Tranzactie(int day,int suma,int tip,char* descriere);
+Tranzactie *Creeaza_Tranzactie(int id,int day,int suma,int tip,char* descriere);
 void Distruge_Tranzactie(Tranzactie *T);
+int ComparaTranzactii(Tranzactie* A, Tranzactie* B);
+int ComparaID(Tranzactie* A,int* id);
+
 
 int Get_ID(Tranzactie* T);
 int Get_Day(Tranzactie* T);

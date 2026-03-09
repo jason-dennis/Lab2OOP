@@ -4,7 +4,7 @@
 
 #include "vectordinamic.h"
 #include <stdlib.h>
-#define INIT_CAPACITY 100
+#define INIT_CAPACITY 10
 
 VectorDinamic *Creeaza_Vector() {
     VectorDinamic* V=malloc(sizeof(VectorDinamic));
@@ -33,24 +33,24 @@ void Adauga(VectorDinamic *V, Element el) {
 }
 
 Element Get(VectorDinamic *V, int poz) {
-    if(poz<=V->cnt)
-    {
-        return V->item[poz];
-    }
+    return V->item[poz];
+
 }
 
 void Sterge(VectorDinamic *V, int poz) {
-    if(poz<=V->cnt)
+    if(0 <= poz && poz < V->cnt)
     {
+        free(V->item[poz]);
         V->item[poz]=V->item[V->cnt-1];
+        V->item[V->cnt-1]=NULL;
         V->cnt--;
     }
 }
 
-int Cauta(VectorDinamic *V, Element el) {
+int Cauta(VectorDinamic *V, Element el,Functie f) {
     for(int i=0;i<V->cnt;++i)
     {
-        if(V->item[i]==el)
+        if(f(V->item[i],el))
         {
             return i;
         }
@@ -59,13 +59,10 @@ int Cauta(VectorDinamic *V, Element el) {
 }
 
 void Resize_Vector(VectorDinamic *V) {
-    Element* item_nou=(Element*)malloc(2*V->dim*sizeof(Element));
-    for(int i=0;i<V->cnt;++i)
-    {
-        item_nou[i]=V->item[i];
+    int dimensiune_nou=V->dim*2;
+    Element* item_nou=realloc(V->item,dimensiune_nou*sizeof(Element));
+    if (item_nou!=NULL) {
+        V->item=item_nou;
+        V->dim=dimensiune_nou;
     }
-
-    free(V->item);
-    V->item=item_nou;
-    V->dim=2*V->dim;
 }

@@ -9,4 +9,6 @@ add_executable(Lab2 main.c
         Structure/vectordinamic.c
         Repository/repo.h
         Repository/repo.c
+        Tests/test_domain.c
+        Tests/test_repo.c
 )

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-Tranzactie *Creeaza_Tranzactie(int day, int suma, int tip, char *descriere) {
+Tranzactie *Creeaza_Tranzactie(int id,int day, int suma, int tip, char *descriere) {
     /*
      * Creeaza o Tranzactie nou si o returneaza
      * Parametrii:
@@ -17,7 +17,7 @@ Tranzactie *Creeaza_Tranzactie(int day, int suma, int tip, char *descriere) {
      * Return: returneaza un element de tip Tranzactie
      */
     Tranzactie *T=(Tranzactie*)malloc(sizeof(Tranzactie));
-
+    T->id=id;
     T->day=day;
     T->suma=suma;
     T->tip=tip;
@@ -31,6 +31,14 @@ void Distruge_Tranzactie(Tranzactie *T) {
      * Sterge Tranzactia
      */
     free(T);
+}
+
+int ComparaTranzactii(Tranzactie *A, Tranzactie *B) {
+    return A->id==B->id;
+}
+
+int ComparaID(Tranzactie *A, int* id) {
+    return A->id==*id;
 }
 
 int Get_ID(Tranzactie *T) {

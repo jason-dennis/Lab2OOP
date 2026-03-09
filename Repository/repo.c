@@ -6,8 +6,9 @@
 #include <stdlib.h>
 Repo *Creeaza_Repo() {
 
-    Repo *R=(Repo*)malloc(sizeof(Tranzactie));
+    Repo *R=malloc(sizeof(Repo));
     R->Tranzactii=Creeaza_Vector();
+    return R;
 }
 
 void Distruge_Repo(Repo *R) {
@@ -20,9 +21,20 @@ void Adauga_Element(Repo *R, Tranzactie *T) {
     Adauga(R->Tranzactii,T);
 }
 
-void Sterge_Element(Repo *R, Tranzactie *T) {
+void Sterge_Element(Repo *R, int ID){
 
+    Sterge(R->Tranzactii,Cauta(R->Tranzactii,&ID,(Functie)ComparaID));
 }
+
+Tranzactie* Cauta_Element(Repo *R, int ID) {
+
+    int pozitie=Cauta(R->Tranzactii,&ID,(Functie)ComparaID);
+    if (pozitie==-1) {
+        return NULL;
+    }
+    return Get(R->Tranzactii,pozitie);
+}
+
 
 
 
