@@ -11,4 +11,9 @@ add_executable(Lab2 main.c
         Repository/repo.c
         Tests/test_domain.c
         Tests/test_repo.c
+        Service/service.h
+        Service/service.c
+        Validator/validator_tranzactie.c
+        Validator/validator_tranzactie.h
+        Tests/test_service.c
 )

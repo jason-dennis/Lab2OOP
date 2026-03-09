@@ -35,7 +35,6 @@ void Adauga(VectorDinamic *V, Element el) {
 
 Element Get(VectorDinamic *V, int poz) {
     return V->item[poz];
-
 }
 
 void Sterge(VectorDinamic *V, int poz,FreeFunc Free) {
