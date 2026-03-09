@@ -15,10 +15,11 @@ VectorDinamic *Creeaza_Vector() {
     return V;
 }
 
-void Distruge_Vector(VectorDinamic *V) {
+void Distruge_Vector(VectorDinamic *V,FreeFunc Free) {
     for(int i=0;i<V->cnt;++i)
     {
-        free(V->item[i]);
+        if(V->item[i]!=NULL)
+            Free(V->item[i]);
     }
     free(V->item);
     free(V);
@@ -37,11 +38,12 @@ Element Get(VectorDinamic *V, int poz) {
 
 }
 
-void Sterge(VectorDinamic *V, int poz) {
+void Sterge(VectorDinamic *V, int poz,FreeFunc Free) {
     if(0 <= poz && poz < V->cnt)
     {
-        free(V->item[poz]);
-        V->item[poz]=V->item[V->cnt-1];
+        Free(V->item[poz]);
+        if(poz<V->cnt-1)
+            V->item[poz]=V->item[V->cnt-1];
         V->item[V->cnt-1]=NULL;
         V->cnt--;
     }

@@ -13,7 +13,7 @@ Repo *Creeaza_Repo() {
 
 void Distruge_Repo(Repo *R) {
 
-    Distruge_Vector(R->Tranzactii);
+    Distruge_Vector(R->Tranzactii,(FreeFunc) Distruge_Tranzactie);
     free(R);
 }
 
@@ -23,7 +23,8 @@ void Adauga_Element(Repo *R, Tranzactie *T) {
 
 void Sterge_Element(Repo *R, int ID){
 
-    Sterge(R->Tranzactii,Cauta(R->Tranzactii,&ID,(Functie)ComparaID));
+    int pozitie=Cauta(R->Tranzactii,&ID,(Functie)ComparaID);
+    Sterge(R->Tranzactii,pozitie,(FreeFunc) Distruge_Tranzactie);
 }
 
 Tranzactie* Cauta_Element(Repo *R, int ID) {
