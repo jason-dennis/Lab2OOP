@@ -6,7 +6,9 @@
 #include <string.h>
 
 int Valideaza_Tranzactie(int day, int suma, int tip, char *descriere) {
-
+    /*
+     *Functia Valideaza datele unei tranzictii
+    */
     int valida=1;
 
     if (!(1<=day && day<=31)) {
@@ -29,13 +31,18 @@ int Valideaza_Tranzactie(int day, int suma, int tip, char *descriere) {
 }
 
 int Valideaza_Modificare_Suma(int suma) {
-
+    /*
+     *Functia Valideaza suma pentru modificarea tranzactiei
+    */
     if (suma<=0)
         return 0;
     return 1;
 }
 
 int Valideaza_Modificare_Day(int Day) {
+    /*
+ *Functia Valideaza ziua pentru modificarea tranzactiei
+*/
     if (!(1<=Day && Day<=31)) {
         return 0;
     }
@@ -43,6 +50,9 @@ int Valideaza_Modificare_Day(int Day) {
 }
 
 int Valideaza_Modificare_Tip(int Tip) {
+    /*
+     *Functia Valideaza tipul pentru modificarea tranzactiei
+    */
     if (Tip !=1 && Tip !=0) {
         return 0;
     }
@@ -50,7 +60,9 @@ int Valideaza_Modificare_Tip(int Tip) {
 }
 
 int Valideaza_Modificare_Descriere(char *Descriere) {
-
+    /*
+     *Functia Valideaza descrierea pentru modificarea tranzactiei
+    */
     if (Descriere==NULL || strlen(Descriere)==0) {
         return 0;
     }
