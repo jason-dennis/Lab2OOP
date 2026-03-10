@@ -9,25 +9,21 @@ int Valideaza_Tranzactie(int day, int suma, int tip, char *descriere) {
     /*
      *Functia Valideaza datele unei tranzictii
     */
-    int valida=1;
 
     if (!(1<=day && day<=31)) {
-        valida=0;
+        return 0;
+    }
+    else if (suma<=0) {
+        return 0;
+    }
+    else if (tip!=0 && tip!=1) {
+        return 0;
+    }
+    else if (descriere==NULL || strlen(descriere)==0) {
+        return 0;
     }
 
-    if (suma<=0) {
-        valida=0;
-    }
-
-    if (tip!=0 && tip!=1) {
-        valida=0;
-    }
-
-    if (descriere==NULL || strlen(descriere)==0) {
-        valida=0;
-    }
-
-    return valida;
+    return 1;
 }
 
 int Valideaza_Modificare_Suma(int suma) {

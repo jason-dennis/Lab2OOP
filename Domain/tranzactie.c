@@ -33,13 +33,6 @@ void Distruge_Tranzactie(Tranzactie *T) {
     free(T);
 }
 
-int ComparaTranzactii(Tranzactie *A, Tranzactie *B) {
-    /*
-     *Compara Id-urile la 2 tranzactii
-     */
-    return A->id==B->id;
-}
-
 int ComparaID(Tranzactie *A, int* id) {
     /*
      * Compara un ID cu Id ul Tranzactiei A
