@@ -12,7 +12,8 @@ typedef struct{
 
 Tranzactie *Creeaza_Tranzactie(int id,int day,int suma,int tip,char* descriere);
 void Distruge_Tranzactie(Tranzactie *T);
-int ComparaTranzactii(Tranzactie* A, Tranzactie* B);
+int ComparaTranzactiiDay(Tranzactie* A, Tranzactie* B);
+int ComparaTranzactiiSuma(Tranzactie* A, Tranzactie* B);
 int ComparaID(Tranzactie* A,int* id);
 
 

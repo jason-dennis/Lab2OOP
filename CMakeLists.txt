@@ -17,6 +17,8 @@ add_executable(Lab2 main.c
         Validator/validator_tranzactie.h
         Tests/test_service.c
         Tests/test_structure.c
+        UI/ui.h
+        UI/ui.c
 )
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")

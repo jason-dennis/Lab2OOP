@@ -25,6 +25,12 @@ void Distruge_Vector(VectorDinamic *V,FreeFunc Free) {
     free(V);
 }
 
+void Distruge_Vector_Copie(VectorDinamic *V) {
+    free(V->item);
+    free(V);
+}
+
+
 void Adauga(VectorDinamic *V, Element el) {
     if(V->cnt==V->dim)
     {
@@ -67,3 +73,29 @@ void Resize_Vector(VectorDinamic *V) {
         V->dim=dimensiune_nou;
     }
 }
+
+void SortareCrescator(VectorDinamic* V, Functie f)
+{
+    for (int i = 0; i < V->cnt- 1; i++) {
+        for (int j = i + 1; j < V->cnt; j++) {
+            if (f(V->item[i], V->item[j]) > 0) {
+                Element temp = V->item[i];
+                V->item[i] = V->item[j];
+                V->item[j] = temp;
+            }
+        }
+    }
+}
+
+void SortareDescrescator(VectorDinamic *V, Functie f) {
+    for (int i = 0; i < V->cnt- 1; i++) {
+        for (int j = i + 1; j < V->cnt; j++) {
+            if (f(V->item[i], V->item[j]) < 0) {
+                Element temp = V->item[i];
+                V->item[i] = V->item[j];
+                V->item[j] = temp;
+            }
+        }
+    }
+}
+

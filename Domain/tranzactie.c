@@ -103,6 +103,14 @@ void Set_Descriere(Tranzactie *T, char *descriere) {
     strcpy(T->descriere,descriere);
 }
 
+int ComparaTranzactiiDay(Tranzactie *A, Tranzactie *B) {
+    return A->day - B->day;
+}
+
+int ComparaTranzactiiSuma(Tranzactie *A, Tranzactie *B) {
+    return A->suma - B->suma;
+}
+
 
 
 

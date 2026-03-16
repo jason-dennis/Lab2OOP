@@ -10,7 +10,8 @@
 void test_service() {
 
     //creem service ul
-    Service* s = Creeaza_Service();
+    Repo* R=Creeaza_Repo();
+    Service* s = Creeaza_Service(R);
     //verificam daca s-a creat corect
     assert(s != NULL);
     assert(s->id_contor == 1);
@@ -66,6 +67,52 @@ void test_service() {
     assert(Sterge_Tranzactie(s, 1) == 1);
     assert(Cauta_Element(s->repo, 1) == NULL);
 
-    //eliberam memoria
+
+    // Adaugam cateva tranzactii pentru testare
+    Adauga_Tranzactie(s, 10, 100, 1, "Intrare1"); // ID 1
+    Adauga_Tranzactie(s, 5, 500, 0, "Iesire1");   // ID 2
+    Adauga_Tranzactie(s, 20, 300, 1, "Intrare2"); // ID 3
+
+    // 1. Test Filtrare dupa Tip (1 - Intrare)
+    VectorDinamic* filtratTip = Vizualizeaza_tranzactie_dupa_tip(s, 1);
+    assert(filtratTip->cnt == 2);
+    Distruge_Vector_Copie(filtratTip);
+
+//    // 2. Test Filtrare dupa Suma (Mai mare de 200)
+    VectorDinamic* filtratSumaMare = Vizualizeaza_tranzactie_cu_suma_mai_mare(s, 200);
+    assert(filtratSumaMare->cnt == 2); // 500 si 300
+    Distruge_Vector_Copie(filtratSumaMare);
+//
+//    // 3. Test Filtrare dupa Suma (Mai mica de 200)
+    VectorDinamic* filtratSumaMica = Vizualizeaza_tranzactie_cu_suma_mai_mica(s, 200);
+    assert(filtratSumaMica->cnt == 1); // 100
+    Distruge_Vector_Copie(filtratSumaMica);
+//
+//    // 4. Test Sortare dupa Zi (Crescator: 5, 10, 20)
+    VectorDinamic* sortatZi = Vizualizeaza_tranzactii_ordinate_zi(s, 0);
+    assert(Get_Day((Tranzactie*)Get(sortatZi, 0)) == 5);
+    assert(Get_Day((Tranzactie*)Get(sortatZi, 1)) == 10);
+    assert(Get_Day((Tranzactie*)Get(sortatZi, 2)) == 20);
+    Distruge_Vector_Copie(sortatZi);
+    sortatZi = Vizualizeaza_tranzactii_ordinate_zi(s, 1);
+    assert(Get_Day((Tranzactie*)Get(sortatZi, 2)) == 5);
+    assert(Get_Day((Tranzactie*)Get(sortatZi, 1)) == 10);
+    assert(Get_Day((Tranzactie*)Get(sortatZi, 0)) == 20);
+    Distruge_Vector_Copie(sortatZi);
+//
+//    // 5. Test Sortare dupa Suma (Descrescator: 500, 300, 100)
+    VectorDinamic* sortatSuma = Vizualizeaza_tranzactii_ordinate_suma(s, 1);
+    assert(Get_Suma((Tranzactie*)Get(sortatSuma, 0)) == 500);
+    assert(Get_Suma((Tranzactie*)Get(sortatSuma, 1)) == 300);
+    assert(Get_Suma((Tranzactie*)Get(sortatSuma, 2)) == 100);
+    Distruge_Vector_Copie(sortatSuma);
+
+    sortatSuma = Vizualizeaza_tranzactii_ordinate_suma(s, 0);
+    assert(Get_Suma((Tranzactie*)Get(sortatSuma, 2)) == 500);
+    assert(Get_Suma((Tranzactie*)Get(sortatSuma, 1)) == 300);
+    assert(Get_Suma((Tranzactie*)Get(sortatSuma, 0)) == 100);
+    Distruge_Vector_Copie(sortatSuma);
+
+    // Curatare finala
     Distruge_Service(s);
 }

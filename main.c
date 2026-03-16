@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "Repository/repo.h"
+#include "Service/service.h"
+#include "UI/ui.h"
 void test_domain();
 void test_repo();
 void test_service();
@@ -11,6 +14,14 @@ int main(void) {
     test_service();
     test_structure();
 
-    printf("Testele au trecut");
+    Repo* repo = Creeaza_Repo();
+    Service* service = Creeaza_Service(repo);
+    UI* ui = Creeaza_UI(service);
+    Run_Console(ui);
+
+
+    Distruge_UI(ui);
+    Distruge_Service(service);
+    Distruge_Repo(repo);
     return 0;
 }

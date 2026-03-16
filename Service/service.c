@@ -4,14 +4,12 @@
 
 #include "service.h"
 
-Service * Creeaza_Service() {
+Service * Creeaza_Service(Repo* R) {
     /*
      * Functia initializeaza Service ul
     */
-
-
     Service* S=(Service*)malloc(sizeof(Service));
-    S->repo=Creeaza_Repo();
+    S->repo=R;
     S->id_contor=1;
     return S;
 }
@@ -113,3 +111,68 @@ int Modifica_Tranzactie_Descriere(Service *S, int ID, char *Descriere) {
     return 1;
 }
 
+
+VectorDinamic* Vizualizeaza_tranzactie_dupa_tip(Service *S, int Tip) {
+    VectorDinamic* rezultat = Creeaza_Vector();
+
+    for (int i = 0; i < S->repo->Tranzactii->cnt; i++) {
+        Tranzactie* t = (Tranzactie*)Get(S->repo->Tranzactii, i);
+        if (Get_Tip(t) == Tip) {
+            Adauga(rezultat, t);
+        }
+    }
+    return rezultat;
+}
+
+VectorDinamic* Vizualizeaza_tranzactie_cu_suma_mai_mica(Service *S, int Suma) {
+    VectorDinamic* rezultat = Creeaza_Vector();
+    for (int i = 0; i < S->repo->Tranzactii->cnt; i++) {
+        Tranzactie* t = (Tranzactie*)Get(S->repo->Tranzactii, i);
+        if (Get_Suma(t) < Suma) {
+            Adauga(rezultat, t);
+        }
+    }
+    return rezultat;
+}
+
+VectorDinamic* Vizualizeaza_tranzactie_cu_suma_mai_mare(Service *S, int Suma) {
+    VectorDinamic* rezultat = Creeaza_Vector();
+    for (int i = 0; i < S->repo->Tranzactii->cnt; i++) {
+        Tranzactie* t = (Tranzactie*)Get(S->repo->Tranzactii, i);
+        if (Get_Suma(t) > Suma) {
+            Adauga(rezultat, t);
+        }
+    }
+    return rezultat;
+}
+
+VectorDinamic* Vizualizeaza_tranzactii_ordinate_zi(Service *S, int reverse) {
+    VectorDinamic* copie = Creeaza_Vector();
+    for (int i = 0; i < S->repo->Tranzactii->cnt; i++) {
+        Adauga(copie, Get(S->repo->Tranzactii, i));
+    }
+
+    if (reverse == 0) {
+        SortareCrescator(copie, (Functie)ComparaTranzactiiDay);
+    } else {
+        SortareDescrescator(copie, (Functie)ComparaTranzactiiDay);
+    }
+
+    return copie;
+}
+
+VectorDinamic* Vizualizeaza_tranzactii_ordinate_suma(Service *S, int reverse) {
+    VectorDinamic* copie = Creeaza_Vector();
+
+    for (int i = 0; i < S->repo->Tranzactii->cnt; i++) {
+        Adauga(copie, Get(S->repo->Tranzactii, i));
+    }
+
+    if (reverse == 0) {
+        SortareCrescator(copie, (Functie)ComparaTranzactiiSuma);
+    } else {
+        SortareDescrescator(copie, (Functie)ComparaTranzactiiSuma);
+    }
+
+    return copie;
+}
