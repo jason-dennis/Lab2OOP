@@ -47,8 +47,8 @@ int Valideaza_Modificare_Day(int Day) {
 
 int Valideaza_Modificare_Tip(int Tip) {
     /*
-     *Functia Valideaza tipul pentru modificarea tranzactiei
-    */
+ *Functia Valideaza ziua pentru modificarea tranzactiei
+*/
     if (Tip !=1 && Tip !=0) {
         return 0;
     }

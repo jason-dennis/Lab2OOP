@@ -104,10 +104,24 @@ void Set_Descriere(Tranzactie *T, char *descriere) {
 }
 
 int ComparaTranzactiiDay(Tranzactie *A, Tranzactie *B) {
+    /*
+     * Compara 2 tranzactii dupa ziua
+     * return :  > 0 -> A->day mai mare
+     *           < 0 -> A-day mai mic
+     *           0  -> A-day = B-day
+     *
+     */
     return A->day - B->day;
 }
 
 int ComparaTranzactiiSuma(Tranzactie *A, Tranzactie *B) {
+    /*
+     * Compara 2 tranzactii dupa suma
+     * return :  > 0 -> A->suma mai mare
+     *           < 0 -> A-suma mai mic
+     *           0  -> A-suma = B-suma
+     *
+     */
     return A->suma - B->suma;
 }
 

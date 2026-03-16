@@ -113,6 +113,6 @@ void test_service() {
     assert(Get_Suma((Tranzactie*)Get(sortatSuma, 0)) == 100);
     Distruge_Vector_Copie(sortatSuma);
 
-    // Curatare finala
+
     Distruge_Service(s);
 }

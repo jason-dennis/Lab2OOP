@@ -10,12 +10,25 @@
 typedef struct{
     VectorDinamic* Tranzactii;
 }Repo;
-
+/*
+* Functia creeaza Repo ul
+*/
 Repo* Creeaza_Repo();
+/*
+* Functia Sterge Repo ul si elibereaza memoria
+*/
 void Distruge_Repo(Repo* R);
-
+/*
+* Functia adauga in repo tranzactia T
+*/
 void Adauga_Element(Repo* R, Tranzactie* T);
+/*
+* Functia Sterge Elementul cu ID-ul =ID;
+*/
 void Sterge_Element(Repo* R, int ID);
+/*
+*  Functia Cauta un element dupa ID si il returneaza
+*/
 Tranzactie* Cauta_Element(Repo *R,int ID);
 
 

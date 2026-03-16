@@ -8,7 +8,6 @@ void test_service();
 void test_structure();
 int main(void) {
 
-    ///Testam Domain,Repository si Service
     test_domain();
     test_repo();
     test_service();
@@ -21,7 +20,7 @@ int main(void) {
 
 
     Distruge_UI(ui);
-    Distruge_Service(service);
-    Distruge_Repo(repo);
     return 0;
 }
+
+////gcc -g -O0 -o /tmp/main main.c Domain/tranzactie.c Repository/repo.c Service/service.c Structure/vectordinamic.c Tests/test_domain.c Tests/test_repo.c Tests/test_service.c Tests/test_structure.c UI/ui.c Validator/validator_tranzactie.c
