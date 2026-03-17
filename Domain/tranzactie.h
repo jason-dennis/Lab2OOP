@@ -7,7 +7,7 @@
 
 typedef struct{
     int id,day,suma,tip;
-    char descriere[256];
+    char* descriere;
 }Tranzactie;
 
 
@@ -28,20 +28,16 @@ Tranzactie *Creeaza_Tranzactie(int id,int day,int suma,int tip,char* descriere);
 void Distruge_Tranzactie(Tranzactie *T);
 /*
  * Compara 2 tranzactii dupa ziua
- * return :  > 0 -> A->day mai mare
- *           < 0 -> A-day mai mic
- *           0  -> A-day = B-day
  *
  */
-int ComparaTranzactiiDay(Tranzactie* A, Tranzactie* B);
+int ComparaTranzactiiDayCresc(Tranzactie* A, Tranzactie* B);
+int ComparaTranzactiiDayDesc(Tranzactie* A, Tranzactie* B);
 /*
  * Compara 2 tranzactii dupa suma
- * return :  > 0 -> A->suma mai mare
- *           < 0 -> A-suma mai mic
- *           0  -> A-suma = B-suma
  *
  */
-int ComparaTranzactiiSuma(Tranzactie* A, Tranzactie* B);
+int ComparaTranzactiiSumaCresc(Tranzactie* A, Tranzactie* B);
+int ComparaTranzactiiSumaDesc(Tranzactie* A, Tranzactie* B);
 
 /*
  * Compara un ID cu Id ul Tranzactiei A

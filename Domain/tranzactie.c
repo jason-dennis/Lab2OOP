@@ -17,6 +17,7 @@ Tranzactie *Creeaza_Tranzactie(int id,int day, int suma, int tip, char *descrier
      * Return: returneaza un element de tip Tranzactie
      */
     Tranzactie *T=(Tranzactie*)malloc(sizeof(Tranzactie));
+    T->descriere=malloc(250*sizeof (char));
     T->id=id;
     T->day=day;
     T->suma=suma;
@@ -103,7 +104,7 @@ void Set_Descriere(Tranzactie *T, char *descriere) {
     strcpy(T->descriere,descriere);
 }
 
-int ComparaTranzactiiDay(Tranzactie *A, Tranzactie *B) {
+int ComparaTranzactiiDayCresc(Tranzactie *A, Tranzactie *B) {
     /*
      * Compara 2 tranzactii dupa ziua
      * return :  > 0 -> A->day mai mare
@@ -113,8 +114,18 @@ int ComparaTranzactiiDay(Tranzactie *A, Tranzactie *B) {
      */
     return A->day - B->day;
 }
+int ComparaTranzactiiDayDesc(Tranzactie *A, Tranzactie *B) {
+    /*
+     * Compara 2 tranzactii dupa ziua
+     * return :  > 0 -> A->day mai mare
+     *           < 0 -> A-day mai mic
+     *           0  -> A-day = B-day
+     *
+     */
+    return B->day - A->day;
+}
 
-int ComparaTranzactiiSuma(Tranzactie *A, Tranzactie *B) {
+int ComparaTranzactiiSumaCresc(Tranzactie *A, Tranzactie *B) {
     /*
      * Compara 2 tranzactii dupa suma
      * return :  > 0 -> A->suma mai mare
@@ -124,7 +135,16 @@ int ComparaTranzactiiSuma(Tranzactie *A, Tranzactie *B) {
      */
     return A->suma - B->suma;
 }
-
+int ComparaTranzactiiSumaDesc(Tranzactie *A, Tranzactie *B) {
+    /*
+     * Compara 2 tranzactii dupa suma
+     * return :  > 0 -> A->suma mai mare
+     *           < 0 -> A-suma mai mic
+     *           0  -> A-suma = B-suma
+     *
+     */
+    return B->suma - A->suma;
+}
 
 
 

@@ -2,6 +2,7 @@
 #include "Repository/repo.h"
 #include "Service/service.h"
 #include "UI/ui.h"
+
 void test_domain();
 void test_repo();
 void test_service();

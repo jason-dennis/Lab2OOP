@@ -5,12 +5,19 @@
 #include <assert.h>
 #include <stdlib.h>
 
-int Compara(Element a, Element b)
+int ComparaCresc(Element a, Element b)
 {
     int valA = *(int*)a;
     int valB = *(int*)b;
     return valA - valB;
 }
+int ComparaDesc(Element a, Element b)
+{
+    int valA = *(int*)a;
+    int valB = *(int*)b;
+    return valB - valA;
+}
+
 void f(Element a)
 {
     free(a);
@@ -36,12 +43,12 @@ void test_structure(){
     Adauga(v,b);
     assert(v->dim==2*size);
 
-    SortareCrescator(v,(Functie) Compara);
+    Sortare(v,(Functie) ComparaCresc);
 
     int first=*(int*)Get(v, 0);
     assert(first == 1);
 
-    SortareDescrescator(v,(Functie) Compara);
+    Sortare(v,(Functie) ComparaDesc);
     first=*(int*)Get(v,0);
 
     assert(first == 21);

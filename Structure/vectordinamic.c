@@ -74,7 +74,8 @@ void Resize_Vector(VectorDinamic *V) {
     }
 }
 
-void SortareCrescator(VectorDinamic* V, Functie f)
+
+void Sortare(VectorDinamic *V, Functie f)
 {
     for (int i = 0; i < V->cnt- 1; i++) {
         for (int j = i + 1; j < V->cnt; j++) {
@@ -86,16 +87,3 @@ void SortareCrescator(VectorDinamic* V, Functie f)
         }
     }
 }
-
-void SortareDescrescator(VectorDinamic *V, Functie f) {
-    for (int i = 0; i < V->cnt- 1; i++) {
-        for (int j = i + 1; j < V->cnt; j++) {
-            if (f(V->item[i], V->item[j]) < 0) {
-                Element temp = V->item[i];
-                V->item[i] = V->item[j];
-                V->item[j] = temp;
-            }
-        }
-    }
-}
-

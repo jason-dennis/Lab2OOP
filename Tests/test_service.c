@@ -73,6 +73,10 @@ void test_service() {
     Adauga_Tranzactie(s, 5, 500, 0, "Iesire1");   // ID 2
     Adauga_Tranzactie(s, 20, 300, 1, "Intrare2"); // ID 3
 
+    VectorDinamic* Toate = Vizualizeaza_Toate(s);
+    assert(Toate->cnt == 3);
+    Distruge_Vector_Copie(Toate);
+
     // 1. Test Filtrare dupa Tip (1 - Intrare)
     VectorDinamic* filtratTip = Vizualizeaza_tranzactie_dupa_tip(s, 1);
     assert(filtratTip->cnt == 2);

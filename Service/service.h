@@ -70,4 +70,5 @@ VectorDinamic* Vizualizeaza_tranzactii_ordinate_zi(Service* S,int Day);
 */
 VectorDinamic* Vizualizeaza_tranzactii_ordinate_suma(Service* S,int Suma);
 
+VectorDinamic *Vizualizeaza_Toate(Service *S);
 #endif //LAB2_SERVICE_H

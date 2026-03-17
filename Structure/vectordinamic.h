@@ -25,8 +25,7 @@ void Adauga(VectorDinamic *v,Element el);
 Element Get(VectorDinamic *v, int poz);
 void Sterge(VectorDinamic *v,int poz,FreeFunc Free);
 int Cauta(VectorDinamic *v,Element el,Functie f);
-void SortareCrescator(VectorDinamic* v,Functie f);
-void SortareDescrescator(VectorDinamic* v,Functie f);
+void Sortare(VectorDinamic* v,Functie f);
 
 
 #endif //LAB2_VECTORDINAMIC_H

@@ -152,10 +152,11 @@ VectorDinamic* Vizualizeaza_tranzactii_ordinate_zi(Service *S, int reverse) {
         Adauga(copie, Get(S->repo->Tranzactii, i));
     }
 
+
     if (reverse == 0) {
-        SortareCrescator(copie, (Functie)ComparaTranzactiiDay);
+        Sortare(copie, (Functie)ComparaTranzactiiDayCresc);
     } else {
-        SortareDescrescator(copie, (Functie)ComparaTranzactiiDay);
+        Sortare(copie, (Functie)ComparaTranzactiiDayDesc);
     }
 
     return copie;
@@ -169,10 +170,22 @@ VectorDinamic* Vizualizeaza_tranzactii_ordinate_suma(Service *S, int reverse) {
     }
 
     if (reverse == 0) {
-        SortareCrescator(copie, (Functie)ComparaTranzactiiSuma);
+        Sortare(copie, (Functie)ComparaTranzactiiSumaCresc);
     } else {
-        SortareDescrescator(copie, (Functie)ComparaTranzactiiSuma);
+        Sortare(copie, (Functie)ComparaTranzactiiSumaDesc);
     }
 
     return copie;
+}
+
+VectorDinamic *Vizualizeaza_Toate(Service *S)
+{
+    VectorDinamic* copie = Creeaza_Vector();
+
+    for (int i = 0; i < S->repo->Tranzactii->cnt; i++) {
+        Adauga(copie, Get(S->repo->Tranzactii, i));
+    }
+
+    return copie;
+
 }

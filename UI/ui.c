@@ -167,6 +167,11 @@ void ui_vizualizare_ordonata(UI* ui) {
     }
 }
 
+void ui_toate(UI* ui)
+{
+    afiseaza_lista_tranzactii(Vizualizeaza_Toate(ui->service));
+}
+
 void Run_Console(UI* ui) {
     /*
  *  Functia ruleaza consola aplicatiei
@@ -181,6 +186,7 @@ void Run_Console(UI* ui) {
         printf("3. Sterge tranzactie\n");
         printf("4. Filtrare tranzactii\n");
         printf("5. Vizualizare ordonata\n");
+        printf("6. Vizualizare tot\n");
         printf("0. Iesire\n");
         printf("Alege optiune: ");
 
@@ -200,6 +206,8 @@ void Run_Console(UI* ui) {
             case 4: ui_vizualizare_filtru(ui);
                     break;
             case 5: ui_vizualizare_ordonata(ui);
+                    break;
+            case 6: ui_toate(ui);
                     break;
             case 0: running = 0; printf("Pa Sefu!\n");
                     break;
