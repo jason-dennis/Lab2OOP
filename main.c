@@ -17,7 +17,7 @@ int main(void) {
     Repo* repo = Creeaza_Repo();
     Service* service = Creeaza_Service(repo);
     UI* ui = Creeaza_UI(service);
-    Run_Console(ui);
+//    Run_Console(ui);
 
 
     Distruge_UI(ui);

@@ -31,6 +31,7 @@ void Distruge_Tranzactie(Tranzactie *T) {
     /*
      * Sterge Tranzactia
      */
+    free(T->descriere);
     free(T);
 }
 
